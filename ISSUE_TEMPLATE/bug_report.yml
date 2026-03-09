@@ -1,0 +1,51 @@
+name: Bug Report
+description: Report a parsing bug or incorrect behavior
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: repo
+    attributes:
+      label: Repository
+      options:
+        - rdx (Rust parser)
+        - tree-sitter-rdx (Tree-sitter grammar)
+    validations:
+      required: true
+
+  - type: textarea
+    id: input
+    attributes:
+      label: RDX Input
+      description: The `.rdx` content that triggers the bug.
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should happen? Include expected AST output if relevant.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happens? Include actual AST output, error messages, or parse tree.
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Parser version or commit hash.
+      placeholder: e.g. 0.1.0 or abc1234
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Anything else that might help (OS, toolchain version, etc.).

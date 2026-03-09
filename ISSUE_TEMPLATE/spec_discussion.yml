@@ -1,0 +1,38 @@
+name: Spec Discussion
+description: Discuss a potential change to the RDX specification
+labels: ["spec"]
+body:
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why should the spec change? What use case does this enable?
+    validations:
+      required: true
+
+  - type: textarea
+    id: syntax
+    attributes:
+      label: Proposed Syntax
+      description: |
+        Show example RDX input and the expected AST output.
+
+        ```rdx
+        <your example here>
+        ```
+    validations:
+      required: true
+
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Backward Compatibility
+      description: Does this break existing valid RDX documents? How?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: References to similar features in other formats, prior discussions, etc.

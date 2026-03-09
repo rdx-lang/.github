@@ -1,0 +1,39 @@
+name: Feature Request
+description: Propose a new feature or syntax addition
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or Use Case
+      description: What are you trying to do? Why does current RDX not cover this?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Solution
+      description: How should this work? Include example `.rdx` syntax and expected AST output if proposing a syntax change.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      description: Does this require a spec change?
+      options:
+        - Spec change (new syntax or AST node)
+        - Parser/tooling only (no spec change)
+        - Transform (new AST transform)
+        - Tree-sitter grammar
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any other approaches you considered and why they don't work.
