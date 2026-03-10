@@ -37,7 +37,7 @@ The equation $E = mc^2$ changed everything.
 
 ```sh
 cargo add rdx-parser    # Rust
-pip install rdx          # Python
+pip install rdx-parser          # Python
 npm install @rdx-lang/node  # Node.js
 npm install @rdx-lang/wasm  # Browser / Deno / Edge
 ```
