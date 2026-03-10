@@ -1,31 +1,18 @@
 # RDX (Reactive Document eXpressions)
 
-**A strictly typed, declarative document format for rich documents.**
+**A strictly typed, declarative document format for rich, interactive content.**
 
-RDX is a superset of CommonMark that adds interactive components, strictly-typed attributes, and structured data. It produces a clean, predictable AST that any language or framework can consume — no runtime, no bundler, no JavaScript required.
+RDX extends CommonMark with components, typed attributes, and structured data — without executing code. Documents are pure data: parse them into a typed AST from Rust, Node.js, Python, or the browser.
 
-## Who is RDX for?
+## Why RDX
 
-- **Platform teams** shipping docs infrastructure where arbitrary JS execution is a security risk
-- **Rust, Go, Python backends** that need rich component documents without a Node.js dependency
-- **CMS and tooling authors** who want a spec-driven format with a guaranteed AST shape, not implementation-defined behavior
-- **Teams at scale** where documents are data — validated, transformed, and rendered by pipelines, not dev servers
+- **No runtime, no execution** — Components describe *what* to render, never *how*. No `import`, no `eval()`, no JavaScript in your documents.
+- **Runs anywhere** — One parser, every platform. Native bindings for Rust, Node.js, and Python. WebAssembly for browsers and edge runtimes.
+- **Schema validation** — Define what components exist, what props they accept, and catch errors at build time — not in production.
+- **Formally specified** — The [specification](https://github.com/rdx-lang/rdx/blob/main/SPECIFICATION.md) defines every construct and its AST output. Predictable, deterministic, no implementation-defined behavior.
+- **AI-ready** — Clean text extraction for RAG pipelines, embeddings, and search indexing. No JSX artifacts polluting your vectors.
 
-If you're a solo developer happy with MDX and its ecosystem, MDX is great. RDX exists for the cases where you need **safety without sandboxing**, **portability across language runtimes**, and **a formal specification** you can build contracts around.
-
-## What makes RDX different
-
-**No runtime, no execution** — An RDX document is pure data. Components describe *what* to render, never *how*. There is no `import`, no function calls, no expression evaluation. The parser output is a typed AST that renderers consume directly.
-
-**Runs anywhere** — The reference parser is written in Rust. There is no dependency on Node.js or any JavaScript toolchain. Embed it in a CLI, a server, a WASM module, or a mobile app.
-
-**Formally specified** — The [specification](https://github.com/rdx-lang/rdx/blob/main/SPECIFICATION.md) defines every syntactic construct and its AST output. Multiple parser implementations can exist and produce identical results.
-
-**Batteries included** — Frontmatter, GFM extensions (tables, strikethrough, task lists, footnotes), LaTeX math, and HTML pass-through are all part of the core grammar. No plugins needed for the common cases.
-
-**Extensible by design** — The `Transform` trait provides a composable pipeline for AST-level transforms (auto-slug, table of contents, custom link rewriting). Add what you need, skip what you don't.
-
-## Quick Look
+## Quick look
 
 ```rdx
 ---
@@ -46,23 +33,49 @@ version: 1.0
 The equation $E = mc^2$ changed everything.
 ```
 
+## Get started
+
+```sh
+cargo add rdx-parser    # Rust
+pip install rdx          # Python
+npm install @rdx-lang/node  # Node.js
+npm install @rdx-lang/wasm  # Browser / Deno / Edge
+```
+
 ## Repositories
 
-### [`rdx`](https://github.com/rdx-lang/rdx) — Reference Implementation
+### [`rdx`](https://github.com/rdx-lang/rdx) — Parser & Toolchain
 
-The official Rust parser and toolchain.
+The core Rust implementation with bindings for every platform.
 
-- **`rdx-parser`** — Full RDX parser producing a spec-compliant AST
-- **`rdx-ast`** — AST types with serialization support
-- **`rdx-transform`** — Composable AST transform pipeline (auto-slug, table of contents, and custom transforms)
-- **`rdx-github`** — Optional GitHub references transform (`#123`, `@user`, commit SHAs)
+| Crate | What it does |
+|---|---|
+| `rdx-parser` | Parses `.rdx` into a spec-compliant AST |
+| `rdx-ast` | AST type definitions |
+| `rdx-schema` | Component schema validation |
+| `rdx-transform` | Composable AST transforms (auto-slug, TOC) |
+| `rdx-github` | GitHub references transform |
+| `rdx-wasm` | WebAssembly bindings |
+| `rdx-node` | Native Node.js bindings |
+| `rdx-py` | Python bindings |
 
-### [`tree-sitter-rdx`](https://github.com/rdx-lang/tree-sitter-rdx) — Tree-sitter Grammar
+### [`rdx-js`](https://github.com/rdx-lang/rdx-js) — JavaScript Ecosystem
 
-Syntax highlighting and structural analysis for editors. Powers RDX support in Neovim, Helix, Zed, and any tree-sitter-compatible editor.
+Pure TypeScript packages for the JS ecosystem.
+
+| Package | What it does |
+|---|---|
+| `@rdx-lang/types` | TypeScript type definitions for the AST |
+| `@rdx-lang/core` | JS transform pipeline, tree walking, utilities |
+| `@rdx-lang/github` | GitHub references transform (pure JS) |
+
+### [`tree-sitter-rdx`](https://github.com/rdx-lang/tree-sitter-rdx) — Editor Support
+
+Syntax highlighting and structural analysis for Neovim, Helix, Zed, and any tree-sitter-compatible editor.
 
 ## Links
 
 - [Specification](https://github.com/rdx-lang/rdx/blob/main/SPECIFICATION.md)
-- [Rust Crate Documentation](https://github.com/rdx-lang/rdx)
+- [Rust Docs](https://github.com/rdx-lang/rdx)
+- [JavaScript Packages](https://github.com/rdx-lang/rdx-js)
 - [Tree-sitter Grammar](https://github.com/rdx-lang/tree-sitter-rdx)
