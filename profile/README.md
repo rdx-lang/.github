@@ -6,7 +6,7 @@ RDX extends CommonMark with components, typed attributes, and structured data �
 
 ## Why RDX
 
-- **No runtime, no execution** — Components describe *what* to render, never *how*. No `import`, no `eval()`, no JavaScript in your documents.
+- **No runtime, no execution** — Components describe _what_ to render, never _how_. No `import`, no `eval()`, no JavaScript in your documents.
 - **Runs anywhere** — One parser, every platform. Native bindings for Rust, Node.js, and Python. WebAssembly for browsers and edge runtimes.
 - **Schema validation** — Define what components exist, what props they accept, and catch errors at build time — not in production.
 - **Formally specified** — The [specification](https://github.com/rdx-lang/rdx/blob/main/SPECIFICATION.md) defines every construct and its AST output. Predictable, deterministic, no implementation-defined behavior.
@@ -17,7 +17,6 @@ RDX extends CommonMark with components, typed attributes, and structured data �
 ```rdx
 ---
 title: Getting Started
-version: 1.0
 ---
 
 # {$title}
@@ -25,57 +24,28 @@ version: 1.0
 <Notice type="warning" dismissible>
   This API is in beta. See the [migration guide](/docs/migrate).
 </Notice>
-
-<Card title="Installation" icon={$config.installIcon}>
-  Run `npm install @example/sdk` to get started.
-</Card>
-
-The equation $E = mc^2$ changed everything.
 ```
 
 ## Get started
 
 ```sh
-cargo add rdx-parser    # Rust
-pip install rdx-parser          # Python
-npm install @rdx-lang/node  # Node.js
-npm install @rdx-lang/wasm  # Browser / Deno / Edge
+cargo add rdx-parser           # Rust
+pip install rdx-parser         # Python
+npm install @rdx-lang/node     # Node.js
+npm install @rdx-lang/wasm     # Browser / Deno / Edge
+cargo install rdx-cli          # CLI
 ```
 
 ## Repositories
 
-### [`rdx`](https://github.com/rdx-lang/rdx) — Parser & Toolchain
-
-The core Rust implementation with bindings for every platform.
-
-| Crate | What it does |
-|---|---|
-| `rdx-parser` | Parses `.rdx` into a spec-compliant AST |
-| `rdx-ast` | AST type definitions |
-| `rdx-schema` | Component schema validation |
-| `rdx-transform` | Composable AST transforms (auto-slug, TOC) |
-| `rdx-github` | GitHub references transform |
-| `rdx-wasm` | WebAssembly bindings |
-| `rdx-node` | Native Node.js bindings |
-| `rdx-py` | Python bindings |
-
-### [`rdx-js`](https://github.com/rdx-lang/rdx-js) — JavaScript Ecosystem
-
-Pure TypeScript packages for the JS ecosystem.
-
-| Package | What it does |
-|---|---|
-| `@rdx-lang/types` | TypeScript type definitions for the AST |
-| `@rdx-lang/core` | JS transform pipeline, tree walking, utilities |
-| `@rdx-lang/github` | GitHub references transform (pure JS) |
-
-### [`tree-sitter-rdx`](https://github.com/rdx-lang/tree-sitter-rdx) — Editor Support
-
-Syntax highlighting and structural analysis for Neovim, Helix, Zed, and any tree-sitter-compatible editor.
+| Repo                                                             | Description                                                              |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [`rdx`](https://github.com/rdx-lang/rdx)                         | Parser, schema, transforms, bindings (Rust, Node, Python, WASM), and CLI |
+| [`rdx-js`](https://github.com/rdx-lang/rdx-js)                   | TypeScript types, JS transform pipeline, and JS-native extensions        |
+| [`tree-sitter-rdx`](https://github.com/rdx-lang/tree-sitter-rdx) | Syntax highlighting for Neovim, Helix, Zed                               |
 
 ## Links
 
 - [Specification](https://github.com/rdx-lang/rdx/blob/main/SPECIFICATION.md)
-- [Rust Docs](https://github.com/rdx-lang/rdx)
 - [JavaScript Packages](https://github.com/rdx-lang/rdx-js)
 - [Tree-sitter Grammar](https://github.com/rdx-lang/tree-sitter-rdx)
